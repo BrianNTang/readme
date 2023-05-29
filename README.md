@@ -13,3 +13,8 @@ pnpm dev
 ## Deployment
 
 I aim to deploy this project initially on GitHub Pages. Possible alternatives include Netlify and Vercel.
+
+```zsh
+pnpm run build
+pnpm run deploy # pnpm deploy and pnpm run deploy are different
+```
