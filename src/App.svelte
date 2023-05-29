@@ -1,32 +1,28 @@
 <script>
-  import Header from "./components/Header.svelte";
-  import ProjectCard from "./components/ProjectCard.svelte";
-
-  let projects = [
-    {
-      title: "Project 1",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    },
-    {
-      title: "Project 2",
-      description:
-        "Nulla quis tincidunt ex. Vestibulum tincidunt risus vitae feugiat.",
-    },
-  ];
+  import Router, { link } from "svelte-spa-router";
+  import { routes } from "./routes.js";
+  import { onMount } from "svelte";
+  import { DarkMode } from "flowbite-svelte";
+  let data;
+  if (import.meta.env.VITE_API_ENDPOINT) {
+    async function fetchData() {
+      const response = await fetch(import.meta.env.VITE_API_ENDPOINT);
+      data = await response.json();
+    }
+    onMount(fetchData);
+  }
 </script>
 
-<Header title="My Portfolio" />
+<DarkMode />
+<div class="p-8 overflow-hidden bg-gray-50 dark:bg-gray-900">
+  <Router {routes} />
 
-<main>
-  {#each projects as project}
-    <ProjectCard project="{project}" />
-  {/each}
-</main>
-
-<style>
-  main {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-</style>
+  {#if data}
+    <p>Data:</p>
+    <ul>
+      {#each Object.entries(data) as [key, value]}
+        <li>{key}: {value}</li>
+      {/each}
+    </ul>
+  {/if}
+</div>
