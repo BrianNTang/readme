@@ -1,7 +1,7 @@
 <script>
   import { link } from "svelte-spa-router";
   import urlSlug from "url-slug";
-  export let title, description, image, publishDate;
+  export let title, description, image, duration;
 </script>
 
 <div class="flex py-8 px-4">
@@ -14,8 +14,8 @@
     <p class="my-2 text-lg dark:text-white">
       {description.substring(0, 180)}...
     </p>
-    {#if publishDate}
-      <p class="text-lg dark:text-white">Published: {publishDate}</p>
+    {#if duration}
+      <p class="text-lg dark:text-white">{duration}</p>
     {/if}
   </div>
 </div>

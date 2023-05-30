@@ -1,17 +1,15 @@
 <script>
-  import { format } from "timeago.js";
   import Card from "./Card.svelte";
-  import { blogs } from "../data.js";
+  import { experiences } from "../work.js";
 </script>
 
-<h1 class="text-3xl dark:text-white mb-4">Svelte Starter</h1>
-<p class="text-xl dark:text-white">Svelte + Vite + TailwindCSS + Flowbite-Svelte + Svelte-Spa-Router</p>
-{#each blogs as blog, i}
+<h1 class="text-3xl dark:text-white mb-4">Brian Tang</h1>
+<p class="text-xl dark:text-white">Full Stack Software Engineer</p>
+{#each experiences as experience}
   <Card
-    title={blog.title}
-    description={blog.content}
-    image={blog.image}
-    publishDate={format(blog.publishDate)}
+    title="{experience.title}"
+    description="{experience.content}"
+    image="{experience.image}"
+    duration="{experience.duration}"
   />
 {/each}
-

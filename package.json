@@ -28,7 +28,6 @@
   "dependencies": {
     "@jridgewell/sourcemap-codec": "^1.4.15",
     "svelte-spa-router": "^3.3.0",
-    "timeago.js": "^4.0.2",
     "url-slug": "^3.0.4"
   }
 }
